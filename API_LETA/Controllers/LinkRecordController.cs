@@ -49,8 +49,6 @@ namespace API_LETA.Models
                     Category = c.Category.CategoryName,
                     Tags = c.TagsLinkRecords.Select(s => s.Tag.TagName),
                     Type = c.Type.TypeName,
-                    newTagsForLink = tagRepository.GetByName("sport").Id
-
                 });
             return list;
         }
