@@ -39,10 +39,6 @@ namespace API_LETA.Repositories
         public LinkRecord GetById(int id)
         {
             var item = context.LinkRecords
-                //.Include(c => c.Category)
-                //.Include(c => c.Language)
-                //.Include(c => c.OriginalUrl)
-                //.Include(c => c.Type)
                 .SingleOrDefault(c => c.Id == id);
 
             return item;
@@ -50,12 +46,7 @@ namespace API_LETA.Repositories
 
         public IQueryable<LinkRecord> GetAll()
         {
-            var list = context.LinkRecords
-                //.Include(c => c.Category)
-                //.Include(c => c.Language)
-                //.Include(c => c.OriginalUrl)
-                //.Include(c => c.Type)
-                ;
+            var list = context.LinkRecords;
 
             return list;
         }
