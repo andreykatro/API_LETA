@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace API_LETA.Interfaces
 {
-#warning Видалити зайве interface IOriginalUrlRepository
-
     interface IOriginalUrlRepository
     {
-        //IQueryable<OriginalUrl> GetAll();
         OriginalUrl GetById(int id);
         OriginalUrl GetByName(string name);
         bool Delete(int id);

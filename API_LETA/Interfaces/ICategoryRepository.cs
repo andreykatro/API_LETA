@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace API_LETA.Interfaces
 {
-#warning Видалити зайве interface ICategoryRepository
     interface ICategoryRepository
     {
-
-
-       // IQueryable<Category> GetPart(int number);
         Category GetById(int id);
         Category GetByName(string name);
         bool Delete(int id);

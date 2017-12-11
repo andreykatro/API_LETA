@@ -7,7 +7,7 @@ namespace API_LETA.Models
 {
     public class JsonLinkRecord
     {
-       //public int Id { get; set; }
+        //public int Id { get; set; }
         //public string CreateTime { get; set; }
         public string Url { get; set; }
         public string OriginalUrl { get; set; }

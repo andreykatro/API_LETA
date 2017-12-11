@@ -1,11 +1,8 @@
 ﻿using API_LETA.DAL;
 using API_LETA.Interfaces;
 using API_LETA.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace API_LETA.Repositories
 {

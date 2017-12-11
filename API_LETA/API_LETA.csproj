@@ -6,21 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20171208214100_Initial.cs" />
-    <Compile Remove="Migrations\20171208214100_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20171209074801_Initial.cs" />
-    <Compile Remove="Migrations\20171209074801_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20171209081905_Initial.cs" />
-    <Compile Remove="Migrations\20171209081905_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20171209093426_Initial.cs" />
-    <Compile Remove="Migrations\20171209093426_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20171209094135_Initial.cs" />
-    <Compile Remove="Migrations\20171209094135_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20171209155412_Initial.cs" />
-    <Compile Remove="Migrations\20171209155412_Initial.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="dblinkrecordScrip.sql" />
     <None Remove="dblinkrecordScript.sql" />
     <None Remove="dblinkrekord.sqlite" />
@@ -30,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
