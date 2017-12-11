@@ -259,3 +259,8 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/API_LETA/ТЗ_для_баузер_доповнення.txt
+/API_LETA/Альтернатива_LinkRecordContext.txt
+/API_LETA/dblinkrekordContext.txt
+/API_LETA/dblinkrekord.sqlite
+/API_LETA/dblinkrecordScript.sql

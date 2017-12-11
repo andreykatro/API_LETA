@@ -60,7 +60,6 @@ namespace API_LETA.Models
         [HttpGet("{id}")]
         public dynamic Get(int id)
         {
-
             var list = linkRecordRepository
                 .GetAll()
                 .Where(w => w.Id == id)
@@ -78,26 +77,6 @@ namespace API_LETA.Models
                     Type = c.Type.TypeName
                 });
             return list;
-            //var item = linkRecordRepository.GetById(id);
-
-            //if (item != null)
-            //{
-            //    //var obj = new
-            //    //{
-            //    //    Id = item.Id,
-            //    //    CreateTime = item.CreateTime,
-            //    //    Url = item.Url,
-            //    //    OriginalUrl = item.OriginalUrl.OriginalUrlValue,
-            //    //    Title = item.Title,
-            //    //    Note = item.Note,
-            //    //    Language = item.Language.LanguageName,
-            //    //    Category = item.Category.CategoryName,
-            //    //    Tags = item.TagsLinkRecords.Select(s => s.Tag.TagName),
-            //    //    Type = item.Type.TypeName
-            //    //};
-            //    return obj; 
-            //}
-            //return item; 
         }
 
         // POST api/values
@@ -114,7 +93,6 @@ namespace API_LETA.Models
                 OriginalUrlId = GetIdOriginalUrl(jsonLinkRecord.OriginalUrl),
                 LanguageId = GetIdLanguage(jsonLinkRecord.Language),
                 TypeId = GetIdType(jsonLinkRecord.Type),
-                //TagsLinkRecords = jsonLinkRecord.Tags
             };
 
             if (linkRecordRepository.Insert(linkRecord))
@@ -123,10 +101,6 @@ namespace API_LETA.Models
 
                 AddCollectionTags(jsonLinkRecord.Tags, idNewLinkRecord);
             }
-            //else
-            //{
-            //Response.StatusCode = 400;
-            //}
         }
 
         // PUT api/values/5
@@ -135,8 +109,6 @@ namespace API_LETA.Models
         {
 
             var linkRecord = linkRecordRepository.GetById(id);
-            //linkRecord.Id = id;
-            //linkRecord.CreateTime = jsonLinkRecord.CreateTime;
             linkRecord.Url = jsonLinkRecord.Url;
             linkRecord.Title = jsonLinkRecord.Title;
             linkRecord.Note = jsonLinkRecord.Note;
@@ -156,11 +128,6 @@ namespace API_LETA.Models
                 }
 
                 var newTagsForLink = jsonLinkRecord.Tags.Select(s => new TagsLinkRecord { TagId = tagRepository.GetByName(s).Id, LinkRecordId = id }).ToList();
-                //foreach (var item in newTagsForLink)
-                //{
-                //    var t = item.TagId;
-                //    var l = item.LinkRecordId;
-                //}
                 tagsLinkRecordRepository.Update(newTagsForLink);
             }
         }

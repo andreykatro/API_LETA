@@ -57,25 +57,9 @@ namespace API_LETA.Repositories
 
             return false;
         }
-#warning почисти зайве CategoryRepository 
-        //public bool Insert(Category category)
-        //{
-        //    int res = -1;
-        //    if (category != null
-        //        && (category.CategoryName != null )
-        //        && GetByName(category.CategoryName) == null)
-        //    {
-        //        category.Id = 0;
-        //        context.Categories.Add(category);
-        //        res = context.SaveChanges();
-        //    }
-
-        //    return (res > 0) ? true : false;
-        //}
-
         public bool Update(Category category)
         {
-            if (category != null  //у випадку коли category == null то все інше не буде перпвірятись
+            if (category != null
                 && (category.CategoryName != null)
                 && (GetById(category.Id) != null)
                 && (GetByName(category.CategoryName) == null))
