@@ -32,6 +32,30 @@ namespace API_LETA.Models
 
         }
 
+        // GET: api/controller/getnotes?url="user_value"
+        [HttpGet("{url}")]
+        [Route("GetNotes")]
+        public IQueryable<dynamic> GetNotes(string url)
+        {
+            var list = linkRecordRepository
+                .GetAll()
+                .Where(w => w.Url == url)
+                .Select(s => new {
+                Id = s.Id,
+                CreateTime = s.CreateTime,
+                Url = s.Url,
+                OriginalUrl = s.OriginalUrl.OriginalUrlValue,
+                Title = s.Title,
+                Note = s.Note,
+                Language = s.Language.LanguageName,
+                Category = s.Category.CategoryName,
+                Tags = s.TagsLinkRecords.Select(c => c.Tag.TagName),
+                Type = s.Type.TypeName
+            });
+
+            return list;
+        }
+
         // GET: api/values
         [HttpGet]
         public IQueryable<dynamic> Get()
@@ -48,7 +72,7 @@ namespace API_LETA.Models
                     Language = c.Language.LanguageName,
                     Category = c.Category.CategoryName,
                     Tags = c.TagsLinkRecords.Select(s => s.Tag.TagName),
-                    Type = c.Type.TypeName,
+                    Type = c.Type.TypeName
                 });
             return list;
         }
