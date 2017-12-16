@@ -29,18 +29,45 @@ namespace API_LETA.Models
             originalUrlRepository = new OriginalUrlRepository(context);
             languageRepository = new LanguageRepository(context);
             typeRepository = new TypeRepository(context);
-
         }
 
-        // GET: api/controller/getnotes?url="user_value"
-        [HttpGet("{url}")]
+        // GET: api/controller/getnotes?originalUrl="user_value"&url="user_value"...
+        [HttpGet("{originalUrl, url, title, category, tag, note}")]
         [Route("GetNotes")]
-        public IQueryable<dynamic> GetNotes(string url)
+        public IQueryable<dynamic> Filtering(string originalUrl = "", string url = "", string title = ""
+                                            , string category = "", string tag = "", string note = "")
         {
             var list = linkRecordRepository
                 .GetAll()
-                .Where(w => w.Url == url)
-                .Select(s => new {
+                .Where(w => w
+                            .Url
+                            .ToLowerInvariant()
+                            .Contains(url.ToLowerInvariant()))
+                .Where(w => w
+                            .OriginalUrl
+                            .OriginalUrlValue
+                            .ToLowerInvariant()
+                            .Contains(originalUrl.ToLowerInvariant()))
+                .Where(w => w
+                            .Title
+                            .ToLowerInvariant()
+                            .Contains(title.ToLowerInvariant()))
+                .Where(w => w
+                            .Category
+                            .CategoryName
+                            .ToLowerInvariant()
+                            .Contains(category.ToLowerInvariant()))
+                .Where(w => w
+                            .Note
+                            .ToLowerInvariant()
+                            .Contains(note.ToLowerInvariant()))
+                .Where(w => w
+                            .TagsLinkRecords
+                            .FirstOrDefault(f => f.Tag.TagName.ToLowerInvariant().Contains(tag.ToLowerInvariant())) != null)
+                ;
+
+            return list.Select(s => new
+            {
                 Id = s.Id,
                 CreateTime = s.CreateTime,
                 Url = s.Url,
@@ -52,8 +79,6 @@ namespace API_LETA.Models
                 Tags = s.TagsLinkRecords.Select(c => c.Tag.TagName),
                 Type = s.Type.TypeName
             });
-
-            return list;
         }
 
         // GET: api/values
@@ -79,6 +104,7 @@ namespace API_LETA.Models
 
         // GET api/values/5
         [HttpGet("{id}")]
+        [Route("{id:int:min(1)}")]
         public dynamic Get(int id)
         {
             var list = linkRecordRepository

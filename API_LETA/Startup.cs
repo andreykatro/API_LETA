@@ -34,7 +34,6 @@ namespace API_LETA
             services.AddMvc().AddJsonOptions(options => {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
             });
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ILinkRecordRepository, LinkRecordRepository>();
 
         }
