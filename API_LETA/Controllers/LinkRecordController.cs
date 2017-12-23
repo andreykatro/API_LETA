@@ -31,6 +31,13 @@ namespace API_LETA.Models
             typeRepository = new TypeRepository(context);
         }
 
+        [HttpGet]
+        [Route("Echo")]
+        public OkResult EchoOk()
+        {
+            return Ok();
+        }
+
         // GET: api/controller/getnotes?originalUrl="user_value"&url="user_value"...
         [HttpGet("{originalUrl, url, title, category, tag, note}")]
         [Route("GetNotes")]

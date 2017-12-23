@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\JsonSearch.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="dblinkrecordScrip.sql" />
     <None Remove="dblinkrecordScript.sql" />
     <None Remove="dblinkrekord.sqlite" />
