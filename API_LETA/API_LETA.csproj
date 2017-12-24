@@ -3,19 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <NoWin32Manifest>true</NoWin32Manifest>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\JsonSearch.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="dblinkrecordScrip.sql" />
     <None Remove="dblinkrecordScript.sql" />
     <None Remove="dblinkrekord.sqlite" />
-    <None Remove="dblinkrekordContext.txt" />
-    <None Remove="Альтернатива_LinkRecordContext.txt" />
-    <None Remove="ТЗ_для_баузер_доповнення.txt" />
   </ItemGroup>
 
   <ItemGroup>

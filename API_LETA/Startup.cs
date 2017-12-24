@@ -16,7 +16,9 @@ namespace API_LETA
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath).AddJsonFile("config.json");
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("config.json");
+
             builder.AddEnvironmentVariables();
 
             Configuration = builder.Build();

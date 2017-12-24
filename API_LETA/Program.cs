@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http;
 
 namespace API_LETA
 {
@@ -7,7 +8,15 @@ namespace API_LETA
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            try
+            {
+                BuildWebHost(args).Run();
+            }
+            catch (System.Exception)
+            {
+                //Exception! Address/Port already in use.
+                throw;
+            }
         }
 
         public static IWebHost BuildWebHost(string[] args) =>

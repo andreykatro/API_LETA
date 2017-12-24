@@ -30,7 +30,7 @@ namespace API_LETA.Models
             languageRepository = new LanguageRepository(context);
             typeRepository = new TypeRepository(context);
         }
-
+        
         [HttpGet]
         [Route("Echo")]
         public OkResult EchoOk()
@@ -86,6 +86,30 @@ namespace API_LETA.Models
                 Tags = s.TagsLinkRecords.Select(c => c.Tag.TagName),
                 Type = s.Type.TypeName
             });
+        }
+
+        // GET: api/controller/range?index="user_value"&count="user_value"
+        [HttpGet("{index, count}")]
+        [Route("Range")]
+        public IQueryable<dynamic> GetRange(int index, int count )
+        {
+            var list = linkRecordRepository.GetAll()
+                .Skip(index)
+                .Take(count)
+                .Select(c => new
+                {
+                    Id = c.Id,
+                    CreateTime = c.CreateTime,
+                    Url = c.Url,
+                    OriginalUrl = c.OriginalUrl.OriginalUrlValue,
+                    Title = c.Title,
+                    Note = c.Note,
+                    Language = c.Language.LanguageName,
+                    Category = c.Category.CategoryName,
+                    Tags = c.TagsLinkRecords.Select(s => s.Tag.TagName),
+                    Type = c.Type.TypeName
+                });
+            return list;
         }
 
         // GET: api/values
